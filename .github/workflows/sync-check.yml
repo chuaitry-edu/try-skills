@@ -1,0 +1,24 @@
+name: sync-check
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check hermes ↔ claude-code sync
+        run: |
+          for s in try try-plan try-stretch try-method try-task try-review; do
+            diff <(cat "hermes/$s/SKILL.md") <(cat "claude-code/$s.md") \
+              && echo "✅ $s synced" \
+              || echo "❌ $s out of sync"
+          done
+      - name: Check hermes ↔ codex sync
+        run: |
+          for s in try try-plan try-stretch try-method try-task try-review; do
+            diff <(cat "hermes/$s/SKILL.md") <(cat "codex/$s.md") \
+              && echo "✅ $s synced" \
+              || echo "❌ $s out of sync"
+          done
+      - name: Validate trigger-evals.json
+        run: python -c "import json; json.load(open('evals/trigger-evals.json'))" && echo "✅ evals valid"

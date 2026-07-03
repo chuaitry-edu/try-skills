@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/.claude/plugins/plugin-schema.json",
+  "name": "try-skills",
+  "display_name": "🧪 try-skills",
+  "description": "6 个学习诊断工具：目标可行性、难度定位、学法匹配、每日任务、复习巩固。",
+  "skills": [
+    { "name": "try", "path": "hermes/try/SKILL.md" },
+    { "name": "try-plan", "path": "hermes/try-plan/SKILL.md" },
+    { "name": "try-stretch", "path": "hermes/try-stretch/SKILL.md" },
+    { "name": "try-method", "path": "hermes/try-method/SKILL.md" },
+    { "name": "try-task", "path": "hermes/try-task/SKILL.md" },
+    { "name": "try-review", "path": "hermes/try-review/SKILL.md" }
+  ],
+  "install": {
+    "npx": "npx skills@latest add chuaitry-edu/try-skills"
+  }
+}
