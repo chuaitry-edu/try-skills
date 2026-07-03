@@ -1,93 +1,106 @@
+<p align="center">
+  <img src="https://img.shields.io/github/stars/czz09/try-skills?style=for-the-badge&label=⭐%20Stars" alt="stars">
+  <img src="https://img.shields.io/badge/skills-6-blue?style=for-the-badge" alt="skills">
+</p>
+
 # try-skills 🧪
 
-初爱try 的学习工具箱。一套帮助诊断学习问题的 AI agent skill 体系。
+> 一套帮你「学得进去」的 AI 学习工具。不是学习方法课，是 6 个可以直接用的诊断工具。
 
-## 这是什么
+## 为什么需要这个
 
-5 个 skill，覆盖一个学习目标的完整生命周期：
+大多数人学不进一样东西，不是因为懒——是因为**卡在了错误的环节**。
 
-```
-目标 → 定难度 → 配学法 → 排任务 → 搞巩固
-```
+你打开 IDE 就想关掉 → 不是方法问题，是**难度不对**（恐慌区）。  
+你买了 80 本书只读了 2 本 → 不是意志力问题，是**方法不匹配**（阅读≠技能）。  
+你学完了发现全忘了 → 不是记性差，是**复习方式错了**（重读≠回忆）。
 
-| skill | 解决的问题 | 一句话 |
-|-------|-----------|--------|
-| **try-plan** | 这个目标要多久？可行吗？ | 5 个阶段 + 时间估算 + 可行性判断 |
-| **try-stretch** | 太简单了提不起劲 / 太难了想放弃 | 找到舒适区与恐慌区之间的拉伸区 |
-| **try-method** | 不知道该怎么学 | 判断知识/技能/行为/感受类型，匹配对应学法 |
-| **try-task** | 有目标但不知道今天做什么 | 把大目标分解成今天唯一要做的事 |
-| **try-review** | 学完就忘了 | 主动回忆+间隔重复+复盘策略 |
+这套 skill 把「学习」这件事拆成 6 个环节，每个环节一个工具。卡在哪就用哪个。
 
-## 怎么用（选你的 agent）
+## Quickstart（30 秒安装）
 
-```
-hermes/          ← 用于 Hermes Agent
-├── try-plan/SKILL.md
-├── try-stretch/SKILL.md
-├── try-method/SKILL.md
-├── try-task/SKILL.md
-└── try-review/SKILL.md
-
-claude-code/     ← 用于 Claude Code
-├── try-plan.md
-├── try-stretch.md
-├── try-method.md
-├── try-task.md
-└── try-review.md
-
-codex/           ← 用于 Codex CLI
-├── try-plan.md
-├── try-stretch.md
-├── try-method.md
-├── try-task.md
-└── try-review.md
-
-cursor/          ← 用于 Cursor
-├── try-plan.mdc
-├── try-stretch.mdc
-├── try-method.mdc
-├── try-task.mdc
-└── try-review.mdc
+### Hermes Agent
+```bash
+# 把 hermes/ 下的目录复制到你的 skills 目录即可
+cp -r hermes/try-* ~/AppData/Local/hermes/skills/
 ```
 
-### Hermes 用户
-每个 skill 通过触发词调用：
-
-```
-/try-plan       → 目标可行性检查
-/try-stretch    → 难度定位
-/try-method     → 学法匹配
-/try-task       → 任务分解
-/try-review     → 复习方案
+### Claude Code
+```bash
+# 把 claude-code/ 下的 .md 文件放入 .claude/skills/
+cp claude-code/try-*.md .claude/skills/
 ```
 
-### Claude Code / Codex / Cursor 用户
-把对应目录下的 `.md` / `.mdc` 文件放到你的 agent 配置目录即可。内容结构与 Hermes 版一致。
+### Codex CLI
+```bash
+cp codex/try-*.md .agents/skills/
+```
 
-## 设计原则
+### Cursor
+```bash
+cp cursor/try-*.mdc .cursor/rules/
+```
 
-- **一个工具只做一件事** — 每个 skill 只诊断一个问题
-- **给唯一动作** — 不给「三种选择」，只给下一步
-- **不假装科学** — 背后有认知科学依据，但不说术语
-- **不做学习规划师** — 定位、匹配、分解、巩固，不规划长期路径
+装完后，直接对你的 AI 说一句话就能用：
 
-## 如何贡献
+```
+「我想学 Python，但不知道每天该做什么」 → AI 调用 try-task
+「学完就忘了怎么办」                    → AI 调用 try-review
+「这个目标要多久？」                   → AI 调用 try-plan
+「太难了/太简单了」                    → AI 调用 try-stretch
+「不知道怎么学」                      → AI 调用 try-method
+「帮我看看我的问题出在哪」             → AI 调用 try（总路由器）
+```
 
-欢迎提 Issue 和 Pull Request。
+## 6 个工具
 
-流程：
-1. 提 Issue 描述你想改什么
-2. Fork 这个仓库
-3. 改对应的 skill 文件（4 个 agent 目录下的都要改）
-4. 提 PR，我看了会合
+```
+  卡在入口             试试这个
+  ──────────          ────────
+  目标太大，不知道从哪下手    → try-plan   可行性检查
+  太难/太简单/找到不状态     → try-stretch 拉伸区定位
+  不知道该用什么方法学       → try-method  学法匹配
+  知道方法但不知道今天做什么  → try-task    每日分解
+  学完就忘                 → try-review  巩固策略
+  不知道自己卡在哪           → try         总路由器
+```
 
-> 注意：hermes/ 下的 SKILL.md 是主版本。其他 3 个目录是它的副本，改的时候保持同步。
+### try-plan 可行性检查
+你不是不会规划——是没人告诉你「这个目标现不现实」。  
+try-plan 帮你拆成最多 5 个阶段，用三档估算告诉你：以你每天的时间，这件事大概要多久。
 
-## 背景
+### try-stretch 拉伸区定位
+学不进可能是因为**难度不对**——不是内容的问题。  
+舒适区 = 无聊，拉伸区 = 成长，恐慌区 = 逃避。先定位你在哪，再决定下一步。
 
-作者 [@初爱try](https://github.com/czz09)，一个用第一人称实验做学习行为研究的 25 岁内容创作者。
+### try-method 学法匹配
+用读理论书的方法学编程？用看视频的方法学哲学？**方法错了，再努力也没用。**  
+按知识/技能/行为/感受四类匹配最适合的学法。
 
-这些 skill 是为自己的内容创作体系 `try-` 而建，也公开供其他人使用。
+### try-task 每日分解
+知道该学什么，但不知道今天做什么？  
+try-task 把大目标切到今天唯一能做的**一件事**。30-60 分钟，做完了就是推进。
+
+### try-review 巩固策略
+学完就忘是正常的——问题是你的复习方式是重读，不是回忆。  
+主动回忆三遍法 + 间隔重复 + 行为复盘，给不同学习类型不同的巩固方案。
+
+### try 总路由器
+不知道自己卡在哪？总路由器问你一个问题，帮你判断该用哪个工具。
+
+## 设计哲学
+
+- **一个工具只做一件事** — 每个 skill 只诊断一个环节的问题
+- **给唯一动作** — 不给三选一，只给下一步
+- **背后有认知科学，但不搬术语** — 主动回忆、间隔重复、最近发展区，都用大白话
+- **承认自己不知道** — 「这是粗略估算，不是扫描你的大脑」
+
+## 作者
+
+[@初爱try](https://github.com/czz09)，一个 25 岁的内容创作者，用第一人称实验研究学习行为。  
+这些工具是为自己的创作体系做的，公开出来给需要的人。
+
+> 零赞零藏，太阳也会照常升起。
 
 ## License
 
