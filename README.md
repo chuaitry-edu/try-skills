@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://img.shields.io/github/stars/chuaitry-edu/try-skills?style=for-the-badge&label=⭐%20Stars" alt="stars">
-  <img src="https://img.shields.io/badge/skills-7-blue?style=for-the-badge" alt="skills">
+  <img src="https://img.shields.io/badge/skills-8-blue?style=for-the-badge" alt="skills">
   <img src="https://img.shields.io/github/license/chuaitry-edu/try-skills?style=for-the-badge" alt="license">
   <img src="https://img.shields.io/badge/agents-4-green?style=for-the-badge" alt="agents">
 </p>
@@ -8,8 +8,8 @@
 <h1 align="center">try-skills 🧪</h1>
 
 <p align="center">
-  <b>7 AI learning diagnosis tools</b> — stuck somewhere? Use the right tool.<br>
-  <b>7 个 AI 学习诊断工具</b> — 卡在哪用哪个，不卡不用。<br>
+  <b>8 AI learning diagnosis tools</b> — stuck somewhere? Use the right tool.<br>
+  <b>8 个 AI 学习诊断工具</b> — 卡在哪用哪个，不卡不用。<br>
   Supports Hermes / Claude Code / Codex / Cursor.
 </p>
 
@@ -23,12 +23,13 @@ Most people fail to learn not because they're lazy, but because they're **stuck 
 
 | Symptom | Real problem | Use this |
 |---------|-------------|----------|
-| Don't know what to learn/read | Wrong selection (no purpose) | `try-pick` 🆕 |
+| Don't know what to learn/read | Wrong selection (no purpose) | `try-pick` |
 | Open IDE → want to close it | Wrong difficulty (panic zone) | `try-stretch` |
 | Bought 80 books, read 2 | Wrong method (reading ≠ skill) | `try-method` |
 | Finished a chapter → forgot everything | Wrong review (rereading ≠ recall) | `try-review` |
 | Have a goal, don't know what to do today | Missing task breakdown | `try-task` |
 | Not sure if a goal is realistic | Missing feasibility check | `try-plan` |
+| Don't know how to write prompts for learning | Wrong prompt (no boundary) | `prompt-architect` |
 | Don't know where you're stuck | Need a router | `try` |
 | First time using try-skills | Need setup | `try-init` |
 
@@ -51,31 +52,36 @@ Or manually copy:
 Just tell your AI:
 
 ```
-"Check my learning problem"      → try (router)
+| "Check my learning problem"      → try (router)
 "Recommend me something to learn" → try-pick
 "How long will this goal take?"  → try-plan
 "Too hard / too easy"            → try-stretch
 "Don't know how to learn this"   → try-method
 "What should I do today?"        → try-task
 "I forgot everything"            → try-review
+"Can't write a good prompt"      → prompt-architect
 "First time here"                → try-init
 ```
 
-### The 7 Tools
+### The 8 Tools
 
 ```
          try (router) — figure out where you're stuck
               │
+         try-pick (choose direction)
+              │
     ┌─────────┼─────────┐
     │         │         │
  try-plan  try-stretch  try-method
- (feasibility) (difficulty) (method)
+(feasibility) (difficulty) (method)
     │         │         │
     └─────────┼─────────┘
               │
           try-task (daily breakdown)
               │
           try-review (review & recall)
+              │
+          prompt-architect (prompt tool)
               │
           try-init (first-time setup)
 ```
@@ -91,11 +97,11 @@ Just tell your AI:
 
 | Metric | Value |
 |--------|-------|
-| Skills | 7 |
+| Skills | 8 |
 | Supported agents | 4 |
-| Lines of code | ~1,500 |
-| Review rounds | 3 (Opus + GPT-5.5 + Qwen + 5 agents) |
-| Issues fixed | 16+ |
+| Lines of code | ~2,000 |
+| Review rounds | 6 (Opus + GPT + 5 subagents) |
+| Issues fixed | 20+ |
 
 ### License
 
@@ -111,12 +117,13 @@ MIT
 
 | 你遇到的 | 实际是 | 用这个 |
 |---------|--------|-------|
-| 不知道学什么/读什么 | 没想清楚目的 | `try-pick` 🆕 |
+| 不知道学什么/读什么 | 没想清楚目的 | `try-pick` |
 | 打开IDE就想关 | 难度不对（恐慌区） | `try-stretch` |
 | 买了80本书读了2本 | 方法不对（阅读≠技能） | `try-method` |
 | 学完一章全忘了 | 复习方式错了（重读≠回忆） | `try-review` |
 | 有目标却不知道每天该干嘛 | 缺任务分解 | `try-task` |
 | 不知道这个目标现不现实 | 缺可行性判断 | `try-plan` |
+| 不会写Prompt让AI帮我学 | Prompt写得不好 | `prompt-architect` |
 | 不知道自己卡在哪 | 缺路由器 | `try` |
 | 第一次用 | 初始化配置 | `try-init` |
 
@@ -140,16 +147,17 @@ bash <(curl -s https://raw.githubusercontent.com/chuaitry-edu/try-skills/main/sc
 
 ```
 "帮我看看我的学习问题"        → try（路由器）
-"推荐点什么给我学"           → try-pick
-"这个目标要多久"             → try-plan
-"太难了 / 太简单了"          → try-stretch
-「不知道怎么学」           → try-method
-「今天做什么？」           → try-task
-「学完就忘了」             → try-review
-「第一次用」               → try-init
+「推荐点什么给我学」           → try-pick
+「这个目标要多久」             → try-plan
+「太难了 / 太简单了」          → try-stretch
+「不知道怎么学」               → try-method
+「今天做什么？」               → try-task
+「学完就忘了」                 → try-review
+「不会让AI帮我学」             → prompt-architect
+「第一次用」                   → try-init
 ```
 
-### 7 个工具
+### 8 个工具
 
 ```
          try（总路由器）— 判断卡在哪
@@ -165,6 +173,8 @@ bash <(curl -s https://raw.githubusercontent.com/chuaitry-edu/try-skills/main/sc
          try-task（每日任务）
               │
          try-review（复习巩固）
+              │
+         prompt-architect（写Prompt）
               │
          try-init（首次配置）
 ```
