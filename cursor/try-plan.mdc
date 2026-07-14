@@ -1,6 +1,6 @@
 ---
 description: try-plan - AI学习诊断工具
-# globs: 移除以在所有页面生效
+# Always apply
 ---
 
 # try-plan：目标可行性检查

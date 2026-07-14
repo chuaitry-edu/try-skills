@@ -1,6 +1,6 @@
 ---
 description: try-task - AI学习诊断工具
-# globs: 移除以在所有页面生效
+# Always apply
 ---
 
 # try-task：目标→每日任务分解器
