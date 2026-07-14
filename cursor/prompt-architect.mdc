@@ -1,6 +1,6 @@
 ---
-name: prompt-architect
-description: AI学习诊断工具
+description: prompt-architect - AI学习诊断工具
+globs: []
 ---
 
 # Prompt 架构师
